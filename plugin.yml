@@ -1,0 +1,19 @@
+name: SimpleSetLobby
+main: Luthfi\SetLobby\Main
+version: 1.0.0
+api: 5.0.0
+author: Luthfi
+commands:
+  setlobby:
+    description: Sets the lobby location
+    permission: setlobby.cmd
+  lobby:
+    description: Teleports to the lobby location
+    permission: setlobby.cmd
+permissions:
+  setlobby.cmd:
+    description: Allows the player to set the lobby location
+    default: op
+  setlobby.cmd:
+    description: Allows the player to teleport to the lobby location
+    default: true
