@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Luthfi\SetLobby;
+namespace Luthfi\SimpleSetLobby;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
