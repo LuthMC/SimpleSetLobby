@@ -1,6 +1,6 @@
 name: SimpleSetLobby
-main: Luthfi\SetLobby\Main
-version: 1.0.0
+main: Luthfi\SimpleSetLobby\Main
+version: 1.0.2
 api: 5.0.0
 author: Luthfi
 commands:
