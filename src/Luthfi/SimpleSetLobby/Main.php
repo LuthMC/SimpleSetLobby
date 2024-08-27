@@ -18,13 +18,13 @@ class Main extends PluginBase {
     private Config $config;
 
     public function onEnable() : void {
-        $this->getLogger()->info("SetLobby enabled");
+        $this->getLogger()->info("SimplsSetLobby Enabled");
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
     }
 
     public function onDisable() : void {
-        $this->getLogger()->info("SetLobby disabled");
+        $this->getLogger()->info("SimpleSetLobby Disabled");
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
@@ -60,13 +60,13 @@ class Main extends PluginBase {
             "world" => $player->getWorld()->getFolderName()
         ]);
         $this->config->save();
-        $player->sendMessage("Lobby location set!");
+        $player->sendMessage("Lobby Location Set!");
     }
 
     private function unsetLobby(Player $player): void {
         $this->config->remove("lobby");
         $this->config->save();
-        $player->sendMessage("Lobby location unset!");
+        $player->sendMessage("Lobby Location Unset!");
     }
 
     public function teleportToLobby(Player $player): void {
@@ -78,7 +78,7 @@ class Main extends PluginBase {
 
         $world = $this->getServer()->getWorldManager()->getWorldByName($lobby["world"]);
         if (!$world instanceof World) {
-            $player->sendMessage("Lobby world not found.");
+            $player->sendMessage("Lobby not found.");
             return;
         }
 
@@ -94,14 +94,14 @@ class Main extends PluginBase {
             }
             switch ($data) {
                 case 0:
-                    if ($player->hasPermission("setlobby.ui.set")) {
+                    if ($player->hasPermission("setlobby.ui")) {
                         $this->setLobby($player);
                     } else {
                         $player->sendMessage("You do not have permission to set the lobby.");
                     }
                     break;
                 case 1:
-                    if ($player->hasPermission("unsetlobby.cmd")) {
+                    if ($player->hasPermission("unsetlobby.ui")) {
                         $this->unsetLobby($player);
                     } else {
                         $player->sendMessage("You do not have permission to unset the lobby.");
@@ -112,8 +112,8 @@ class Main extends PluginBase {
 
         $form->setTitle("LobbyUI");
         $form->setContent("Select an option:");
-        $form->addButton("SetLobby");
-        $form->addButton("UnSetLobby");
+        $form->addButton("Set Lobby");
+        $form->addButton("Unset Lobby");
         $player->sendForm($form);
     }
 }
