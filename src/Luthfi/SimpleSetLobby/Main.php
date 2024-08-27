@@ -18,7 +18,7 @@ class Main extends PluginBase {
     private Config $config;
 
     public function onEnable() : void {
-        $this->getLogger()->info("SimplsSetLobby Enabled");
+        $this->getLogger()->info("SimpleSetLobby Enabled");
         $this->saveDefaultConfig();
         $this->config = $this->getConfig();
     }
@@ -76,10 +76,17 @@ class Main extends PluginBase {
             return;
         }
 
-        $world = $this->getServer()->getWorldManager()->getWorldByName($lobby["world"]);
+        $worldManager = $this->getServer()->getWorldManager();
+        $world = $worldManager->getWorldByName($lobby["world"]);
+
         if (!$world instanceof World) {
-            $player->sendMessage("Lobby not found.");
-            return;
+            $worldManager->loadWorld($lobby["world"]);//load world before teleportation - Terpz710
+            $world = $worldManager->getWorldByName($lobby["world"]);
+
+            if (!$world instanceof World) {
+                $player->sendMessage("Lobby world could not be found or loaded.");//Message only gets sent if world is not found. Included load just in case. - Terpz710
+                return;
+            }
         }
 
         $pos = new Position($lobby["x"], $lobby["y"], $lobby["z"], $world);
