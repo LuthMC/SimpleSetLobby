@@ -1,8 +1,8 @@
 name: SimpleSetLobby
 main: Luthfi\SimpleSetLobby\Main
-version: 2.0.0
+version: 1.0.0
 api: 5.0.0
-author: YourName
+author: Luthfi
 commands:
   setlobby:
     description: Set the lobby location
@@ -19,3 +19,8 @@ permissions:
   lobbyui.cmd:
     description: Allows the user to open the lobby UI
     default: op
+  setlobby.ui:
+    description: Allows player to set lobby location
+    default: op
+  unsetlobby.ui:
+    description: Allows player to unset lobby location

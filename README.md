@@ -1,2 +1,4 @@
-# SimpleSetLobby
-[Download Now!](https://poggit.pmmp.io/ci/LuthMC/SimpleSetLobby/~)
+# ⭐ SimpleSetLobby
+---
+### ✅ Download
+[Dev Build](https://poggit.pmmp.io/ci/LuthMC/SimpleSetLobby)
